@@ -14,7 +14,6 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         _timeRemaining = _initialTime;
-        DisplayTime(_timeRemaining);
         _timerIsRunning = true;
     }
 
@@ -26,6 +25,7 @@ public class Timer : MonoBehaviour
             if (_timeRemaining > 0)
             {
                 _timeRemaining -= Time.deltaTime;
+                DisplayTime(_timeRemaining);
             }
             else
             {
@@ -35,7 +35,6 @@ public class Timer : MonoBehaviour
                 _timerIsRunning = false;
             }
         }
-        DisplayTime(_timeRemaining);
     }
 
     public void DisplayTime(float timeToDisplay)

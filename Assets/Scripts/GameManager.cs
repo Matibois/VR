@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    
 
-    private bool hasEnteredJewelry = false;
-    private bool hasDisarmedAlarm = false;
-    private bool hasFled = false;
+    [SerializeField] private Timer _timer;
+
+    private bool _hasEnteredJewelry = false;
+    private bool _hasDisarmedAlarm = false;
+    private bool _hasFled = false;
 
     private void Awake()
     {
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _timer.StartTimer();
     }
 
     // Update is called once per frame
@@ -35,16 +38,16 @@ public class GameManager : MonoBehaviour
 
     public void EnterJewelry()
     {
-        hasEnteredJewelry = true;
+        _hasEnteredJewelry = true;
     }
 
     public void DisarmAlarm() 
     { 
-        hasDisarmedAlarm = true; 
+        _hasDisarmedAlarm = true; 
     }
 
     public void Flee() 
     { 
-        hasFled = true; 
+        _hasFled = true; 
     }
 }
