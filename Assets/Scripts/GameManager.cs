@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-
     [SerializeField] private Timer _timer;
 
     private bool _hasEnteredJewelry = false;
@@ -27,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _timer.StartTimer();
+
     }
 
     // Update is called once per frame
@@ -39,6 +38,11 @@ public class GameManager : MonoBehaviour
     public void EnterJewelry()
     {
         _hasEnteredJewelry = true;
+
+        if (_timer != null)
+            _timer.StartTimer();
+        else
+            Debug.LogError("_timer is null !");
     }
 
     public void DisarmAlarm() 
