@@ -47799,7 +47799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8669137971820048389, guid: 4e660da2419d1614198b2c073ddf863d, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
-      value: 2147483648
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8933070723566546062, guid: 4e660da2419d1614198b2c073ddf863d, type: 3}
       propertyPath: m_LineType
