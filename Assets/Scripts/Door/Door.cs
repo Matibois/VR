@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class Door : MonoBehaviour
 {
-    public float openingAngle = 90f; // Angle d'ouverture de la porte
-    public float openingSpeed = 2f; // Vitesse d'ouverture de la porte
+    [SerializeField] private float openingAngle = 90f; // Angle d'ouverture de la porte
+    [SerializeField] private float openingSpeed = 2f; // Vitesse d'ouverture de la porte
 
     private Quaternion initialRotation; // Rotation initiale de la porte
     private Quaternion targetRotation; // Rotation cible de la porte
