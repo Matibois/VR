@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _timeText; // UI
     private float _initialTime = 180.0f;
     private float _timeRemaining;
-    private Text _timeText; // UI
 
     private bool _timerIsRunning = false;
 
