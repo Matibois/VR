@@ -16,7 +16,6 @@ public class Door : MonoBehaviour
     {
         initialRotation = transform.rotation;
         targetRotation = Quaternion.Euler(0, openingAngle, 0) * initialRotation;
-        BreakWindow();
     }
 
     // Update is called once per frame
