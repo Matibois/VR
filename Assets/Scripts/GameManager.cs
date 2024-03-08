@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     
 
     [SerializeField] private Timer _timer;
+    [SerializeField] private ObjectivesManager _objectivesManager;
 
     private void Awake()
     {
