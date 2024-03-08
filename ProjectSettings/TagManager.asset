@@ -9,6 +9,7 @@ TagManager:
   - Destroyer
   - MiniWorldCamera
   - Water
+  - Pickable
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Hands
   - Interactive
   - VRChar
-  - 
+  - Pickable
   - 
   - 
   - 
