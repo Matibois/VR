@@ -9364,6 +9364,7 @@ GameObject:
   - component: {fileID: 6938152354073917624}
   - component: {fileID: 16669376890518624}
   - component: {fileID: 4808417732836992581}
+  - component: {fileID: 7452079864914053869}
   m_Layer: 0
   m_Name: Glass
   m_TagString: Untagged
@@ -9485,6 +9486,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7452079864914053869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241904427053048653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3230cbb05d0df994b91daae4f13f1033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _glass: {fileID: 5241904427053048653}
+  _glassFractured: {fileID: 6408614167261684560}
 --- !u!1 &5331297666467016085
 GameObject:
   m_ObjectHideFlags: 0
@@ -12975,7 +12990,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5168455420464340732}
-  - component: {fileID: 3378653204556395319}
   m_Layer: 0
   m_Name: Showcase
   m_TagString: Untagged
@@ -13001,20 +13015,6 @@ Transform:
   - {fileID: 4298341382461707953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3378653204556395319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000797344269173923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3230cbb05d0df994b91daae4f13f1033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _glass: {fileID: 5241904427053048653}
-  _glassFractured: {fileID: 6408614167261684560}
 --- !u!1 &8262260723958743718
 GameObject:
   m_ObjectHideFlags: 0
