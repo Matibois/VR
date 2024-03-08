@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/* ObjectivesManager :
+- possède tout les objectifs
+- declenche des events lorqu’on set un bool (qui resulte d’une action du joueur) a true
+*/
 public class ObjectivesManager : MonoBehaviour
 {
     public UnityEvent onObjectiveCompleted = new UnityEvent();
