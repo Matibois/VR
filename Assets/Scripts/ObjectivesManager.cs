@@ -12,11 +12,6 @@ public class ObjectivesManager : MonoBehaviour
     private bool _hasDisarmedAlarm = false;
     private bool _hasFled = false;
     private string _currentObjective = "Entrer dans la bijouterie";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

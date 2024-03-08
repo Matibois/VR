@@ -10,14 +10,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Timer _timer;
 
-    public UnityEvent onObjectiveCompleted = new UnityEvent();
-
-    // Player Objectives
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
-    private string _currentObjective = "Entrer dans la bijouterie";
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,35 +31,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-    }
-
-
-    public void EnterJewelry()
-    {
-        _hasEnteredJewelry = true;
-        _currentObjective = "Désarmer l'alarme";
-        onObjectiveCompleted.Invoke();
-    }
-
-
-    public void DisarmAlarm()
-    {
-        _hasDisarmedAlarm = true;
-        _currentObjective = "Vol des bijoux";
-        onObjectiveCompleted.Invoke();
-    }
-
-
-    public void Flee()
-    {
-        _hasFled = true;
-        _currentObjective = "Objectif atteint";
-        onObjectiveCompleted.Invoke();
-    }
-
-
-    public string GetCurrentObjective()
-    {
-        return _currentObjective;
     }
 }
