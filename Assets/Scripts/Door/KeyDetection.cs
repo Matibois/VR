@@ -59,6 +59,5 @@ public class KeyDetection : MonoBehaviour
     {
         _keyAttach.SetActive(true);
         _isUnlocking = true;
-        GameManager.Instance.EnterJewelry();
     }
 }
