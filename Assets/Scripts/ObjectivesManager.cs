@@ -15,11 +15,6 @@ public class ObjectivesManager : MonoBehaviour
     private List<string> _objectivesList;
     [SerializeField] private TextMeshPro _objectivesText;
 
-    // Player Objectives
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
-
     public void Init()
     {
         _onObjectiveCompleted = new UnityEvent<string>();
