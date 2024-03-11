@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class Alarme : MonoBehaviour
 {
-    [SerializeField] private InputField InputFieldCode;
+    [SerializeField] private TextMeshPro InputFieldCode;
     private string codeString;
     private int code;
 
