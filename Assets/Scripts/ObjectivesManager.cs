@@ -13,7 +13,7 @@ public class ObjectivesManager : MonoBehaviour
 {
     public UnityEvent<string> _onObjectiveCompleted;
     private List<string> _objectivesList;
-    private TextMeshPro _objectivesText;
+    [SerializeField] private TextMeshPro _objectivesText;
 
     // Player Objectives
     private bool _hasEnteredJewelry = false;
@@ -34,7 +34,7 @@ public class ObjectivesManager : MonoBehaviour
         _objectivesList.Add("Désactiver l'alarme");
         _objectivesList.Add("Voler les bijoux de la liste");
         _objectivesList.Add("Voler le contenu du coffre-fort");
-        _objectivesList.Add("S'enfuir avant la fin du temps impartie");
+        _objectivesList.Add("S'enfuir avant la fin du temps imparti");
     }
 
     public void EnterJewelry()
@@ -76,7 +76,7 @@ public class ObjectivesManager : MonoBehaviour
         _objectivesText.text = objectivesString;
     }
 
-    private void UpdateObjectivesText(string completedObjective)
+    public void UpdateObjectivesText(string completedObjective)
     {
         // Find the objective you want to achieve in the text and replace it with the crossed-out version
         _objectivesText.text = _objectivesText.text.Replace(completedObjective, "<s>" + completedObjective + "</s>");

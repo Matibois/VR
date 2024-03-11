@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _timer.StartTimer();
+        _objectivesManager.Init();
     }
 
     // Update is called once per frame
