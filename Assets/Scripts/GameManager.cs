@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-
     [SerializeField] private Timer _timer;
     [SerializeField] private ObjectivesManager _objectivesManager;
 
