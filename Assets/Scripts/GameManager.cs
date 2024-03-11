@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
     [SerializeField] private Timer _timer;
-
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
+    [SerializeField] private ObjectivesManager _objectivesManager;
 
     private void Awake()
     {
@@ -26,32 +24,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _timer.StartTimer();
+        _objectivesManager.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
-
-    public void EnterJewelry()
-    {
-        _hasEnteredJewelry = true;
-
-        if (_timer != null)
-            _timer.StartTimer();
-        else
-            Debug.LogError("_timer is null !");
-    }
-
-    public void DisarmAlarm() 
-    { 
-        _hasDisarmedAlarm = true; 
-    }
-
-    public void Flee() 
-    { 
-        _hasFled = true; 
     }
 }
