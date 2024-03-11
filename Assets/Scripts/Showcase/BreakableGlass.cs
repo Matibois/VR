@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class BreakableGlass : MonoBehaviour
 {
     [SerializeField] GameObject _glass;
     [SerializeField] GameObject _glassFractured;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Test
-        //BreakGlass(new Vector3(4, 0.7f, 1.3f));
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,13 +22,16 @@ public class BreakableGlass : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Vérifie si la collision s'est produite avec un autre collider
-        if (collision.collider != null)
-        {
-            // Obtient le point d'impact de la collision
-            ContactPoint contactPoint = collision.GetContact(0);
-            Vector3 pointOfImpact = contactPoint.point;
-            BreakGlass(pointOfImpact);
-        }
+        if (collision.collider == null)
+            return;
+
+        if (!collision.collider.gameObject.CompareTag("Player"))
+            return;
+
+        // Obtient le point d'impact de la collision
+        ContactPoint contactPoint = collision.GetContact(0);
+        Vector3 pointOfImpact = contactPoint.point;
+        BreakGlass(pointOfImpact);
     }
 
     public void BreakGlass(Vector3 breakPos)

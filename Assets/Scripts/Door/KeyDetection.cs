@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class KeyDetection : MonoBehaviour
 {
@@ -19,8 +20,6 @@ public class KeyDetection : MonoBehaviour
     {
         _initialRotation = transform.rotation;
         _targetRotation = Quaternion.Euler(0, 0, _openingAngle) * _initialRotation;
-
-        Unlock();
     }
 
     // Update is called once per frame
@@ -44,14 +43,15 @@ public class KeyDetection : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision == null)
+        if (other == null)
             return;
 
-        if(!collision.gameObject.CompareTag("Key"))
+        if (!other.gameObject.CompareTag("Key"))
             return;
 
+        Destroy(other.gameObject);
         Unlock();
     }
 
@@ -59,5 +59,6 @@ public class KeyDetection : MonoBehaviour
     {
         _keyAttach.SetActive(true);
         _isUnlocking = true;
+        GameManager.Instance.EnterJewelry();
     }
 }
