@@ -9,10 +9,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Alarme : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro InputFieldCode;
-    [SerializeField] private XRSimpleInteractable Bouton;
+    [SerializeField] private TextMeshPro textCode;
+    [SerializeField] private XRSimpleInteractable[] Bouton;
     private string codeString;
-    private int code;
+    private string codeToFind = "3141";
+    private int buttonID;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +29,39 @@ public class Alarme : MonoBehaviour
 
     public void TestCode()
     {
-        codeString = InputFieldCode.GetComponent<InputField>().text;
-        code = Int32.Parse(codeString)
+        if (codeString == codeToFind)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
 ;    }
+
+    public void ActiveButton(ActivateEventArgs activateEvent)
+    {
+        XRSimpleInteractable Button = activateEvent.interactable.GetComponent<XRSimpleInteractable>();
+
+        for (int i = 0; i < Bouton.Length; i++)
+        {
+            if (Button == Bouton[i])
+            {
+                ImplementCode(i);
+            }
+        }
+    }
+
+    private void ImplementCode(int buttonID) // button id == le numéro sur le bouton de l'alarme, 10 == bouton reset
+    {
+        if (buttonID == 10)
+        {
+            codeString = "";
+        }
+        else
+        {
+            codeString += buttonID;
+            if (codeString.Length ==4) TestCode();
+            textCode.text = codeString;
+        }
+    }
 
 }
