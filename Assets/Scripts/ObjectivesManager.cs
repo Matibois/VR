@@ -11,8 +11,8 @@ using UnityEngine.Events;
 */
 public class ObjectivesManager : MonoBehaviour
 {
-    private List<string> _objectivesList;
     [SerializeField] private TextMeshPro _objectivesText;
+    private List<string> _objectivesList;
 
     public void Init()
     {
@@ -38,6 +38,7 @@ public class ObjectivesManager : MonoBehaviour
     public void DisarmAlarm()
     {
         UpdateObjectivesText(_objectivesList[1]);
+        GameManager.Instance.DoorTrigger.SetActive(true);
     }
     
     public void StealJewels()

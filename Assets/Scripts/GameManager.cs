@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Timer _timer;
     [SerializeField] private ObjectivesManager _objectivesManager;
+    [SerializeField] private GameObject _doorTrigger;
 
     public ObjectivesManager ObjectivesManager => _objectivesManager;
+    public GameObject DoorTrigger => _doorTrigger;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         _timer.StartTimer();
         _objectivesManager.Init();
+        _doorTrigger.SetActive(false);
     }
 
     // Update is called once per frame

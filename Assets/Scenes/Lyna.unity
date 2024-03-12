@@ -36245,6 +36245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: {fileID: 6679691440208031961}
   _objectivesManager: {fileID: 17041331}
+  _doorTrigger: {fileID: 0}
 --- !u!4 &1608403593
 Transform:
   m_ObjectHideFlags: 0
@@ -45470,6 +45471,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9026383741967325543, guid: 694eb0baa18dab54ab474400a8d75fdd, type: 3}
   m_PrefabInstance: {fileID: 1998651307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2001470756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001470758}
+  - component: {fileID: 2001470757}
+  m_Layer: 0
+  m_Name: DoorTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &2001470757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001470756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2001470758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001470756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.021, y: 1.365, z: -1.715}
+  m_LocalScale: {x: 2, y: 2.637583, z: 0.28831774}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2011503598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48001,3 +48055,4 @@ SceneRoots:
   - {fileID: 6679691440208031960}
   - {fileID: 1608403593}
   - {fileID: 4003733525557052481}
+  - {fileID: 2001470758}
