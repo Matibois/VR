@@ -69,7 +69,7 @@ public class ObjectivesManager : MonoBehaviour
         _objectivesText.text = objectivesString;
     }
 
-    public void UpdateObjectivesText(string completedObjective)
+    private void UpdateObjectivesText(string completedObjective)
     {
         // Find the objective you want to achieve in the text and replace it with the crossed-out version
         _objectivesText.text = _objectivesText.text.Replace(completedObjective, "<s>" + completedObjective + "</s>");

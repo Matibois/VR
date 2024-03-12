@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Timer _timer;
     [SerializeField] private ObjectivesManager _objectivesManager;
 
+    public ObjectivesManager ObjectivesManager => _objectivesManager;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
