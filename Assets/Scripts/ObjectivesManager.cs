@@ -11,13 +11,11 @@ using UnityEngine.Events;
 */
 public class ObjectivesManager : MonoBehaviour
 {
-    public UnityEvent<string> _onObjectiveCompleted;
     private List<string> _objectivesList;
     [SerializeField] private TextMeshPro _objectivesText;
 
     public void Init()
     {
-        _onObjectiveCompleted = new UnityEvent<string>();
         _objectivesList = new List<string>();
         AddObjectives();
         InitObjectivesText();
@@ -34,27 +32,27 @@ public class ObjectivesManager : MonoBehaviour
 
     public void EnterJewelry()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[0]);
+        UpdateObjectivesText(_objectivesList[0]);
     }
 
     public void DisarmAlarm()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[1]);
+        UpdateObjectivesText(_objectivesList[1]);
     }
     
     public void StealJewels()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[2]);
+        UpdateObjectivesText(_objectivesList[2]);
     }
 
     public void StealSafe()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[3]);
+        UpdateObjectivesText(_objectivesList[3]);
     }
 
     public void Flee()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[4]);
+        UpdateObjectivesText(_objectivesList[4]);
     }
 
     private void InitObjectivesText()
