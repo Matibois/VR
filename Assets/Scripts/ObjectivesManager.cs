@@ -53,7 +53,7 @@ public class ObjectivesManager : MonoBehaviour
 
     public void Flee()
     {
-        UpdateObjectivesText(_objectivesList[4]);
+        UpdateObjectivesText(_objectivesList[4]); 
         // TODO : verify if player stole all jewels
     }
 

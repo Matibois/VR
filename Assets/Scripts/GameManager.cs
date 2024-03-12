@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    private void Loose ()
+    {
+
+    }
 }
