@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public ObjectivesManager ObjectivesManager => _objectivesManager;
     public GameObject DoorTrigger => _doorTrigger;
 
+    private bool _hasEnteredJewelry = false;
+    private bool _hasDisarmedAlarm = false;
+    private bool _hasFled = false;
 
     private void Awake()
     {

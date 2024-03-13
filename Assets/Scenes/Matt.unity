@@ -38888,6 +38888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20488da1cd402e840bb30643c9fbe2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bag: {fileID: 1556243475}
 --- !u!65 &1452032406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38921,7 +38922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 1437030005}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -54770,6 +54771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: {fileID: 5966470513893995118}
   _alarme: {fileID: 1916081857}
+  _objectivesManager: {fileID: 0}
+  _doorTrigger: {fileID: 0}
 --- !u!4 &2025373660
 Transform:
   m_ObjectHideFlags: 0
@@ -57537,11 +57540,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959500975506365157}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20488da1cd402e840bb30643c9fbe2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bag: {fileID: 1556243475}
 --- !u!65 &2870342142350970876
 BoxCollider:
   m_ObjectHideFlags: 0
