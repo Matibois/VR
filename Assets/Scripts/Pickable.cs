@@ -15,7 +15,7 @@ public class Pickable : MonoBehaviour
 
     private Bag bag;
 
-    private void Start()
+    protected void Start()
     {
         isPicked = false;
         nearBag = false;
