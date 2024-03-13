@@ -9,59 +9,95 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Alarme : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro textCode;
-    [SerializeField] private XRSimpleInteractable[] Bouton;
-    private string codeString;
-    private string codeToFind = "3141";
-    private int buttonID;
+    [SerializeField] private TextMeshPro _textCode;
+    [SerializeField] private XRSimpleInteractable[] _bouton;
+    private string _codeString;
+    private string _codeToFind = "3141";
+
+    [SerializeField] public Timer _timer;
+    private bool wait = false;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _timer.StartTimer();
     }
 
     // Update is called once per frame 
     void Update()
     {
-        
+        if (wait)
+        {
+
+        }
     }
 
     public void TestCode()
     {
-        if (codeString == codeToFind)
+        if (_codeString == _codeToFind)
         {
-            GetComponent<Rigidbody>().isKinematic = true;
-
+            _textCode.color = Color.green;
+            StartCoroutine(WaitTestCode(true));
         }
-
-;    }
+        else
+        {
+            _textCode.color = Color.red;
+            StartCoroutine(WaitTestCode(false));
+        }
+        _codeString = "";
+    }
 
     public void ActiveButton(ActivateEventArgs activateEvent)
     {
         XRSimpleInteractable Button = activateEvent.interactable.GetComponent<XRSimpleInteractable>();
 
-        for (int i = 0; i < Bouton.Length; i++)
+        for (int i = 0; i < _bouton.Length; i++)
         {
-            if (Button == Bouton[i])
+            if (Button == _bouton[i])
             {
                 ImplementCode(i);
             }
         }
     }
 
-    private void ImplementCode(int buttonID) // button id == le numéro sur le bouton de l'alarme, 10 == bouton reset
+    private void ImplementCode(int buttonID) // button id == le numéro sur le _bouton de l'alarme, 10 == _bouton reset
     {
         if (buttonID == 10)
         {
-            codeString = "";
+            _codeString = "";
+            _textCode.SetText(_codeString);
         }
         else
         {
-            codeString += buttonID;
-            if (codeString.Length ==4) TestCode();
-            textCode.SetText(codeString);
+            _codeString += buttonID;
+            _textCode.SetText(_codeString);
+            if (_codeString.Length ==4) TestCode();
         }
+        
+
+    }
+
+    IEnumerator WaitTestCode(bool result)
+    {
+        yield return new WaitForSeconds(1);
+        if (result)DesactivateAlarm();
+        else ResetAlarm();
+    }
+
+    private void DesactivateAlarm()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+
+    }
+
+    private void ResetAlarm()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        _codeString = "";
+        _textCode.color = Color.white;
+        _textCode.SetText(_codeString);
     }
 
 }

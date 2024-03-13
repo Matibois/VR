@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     [SerializeField] private Timer _timer;
+    [SerializeField] private Alarme _alarme;
 
     private bool _hasEnteredJewelry = false;
     private bool _hasDisarmedAlarm = false;
     private bool _hasFled = false;
+
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timer.StartTimer();
+       
     }
 
     public void EnterJewelry()
@@ -40,14 +42,15 @@ public class GameManager : MonoBehaviour
         _hasEnteredJewelry = true;
 
         if (_timer != null)
-            _timer.StartTimer();
+            _alarme._timer.StartTimer();
         else
             Debug.LogError("_timer is null !");
     }
 
     public void DisarmAlarm() 
     { 
-        _hasDisarmedAlarm = true; 
+        _hasDisarmedAlarm = true;
+        _timer.StartTimer();
     }
 
     public void Flee() 
