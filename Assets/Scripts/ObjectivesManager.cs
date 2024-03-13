@@ -15,18 +15,6 @@ public class ObjectivesManager : MonoBehaviour
     [SerializeField] private TextMeshPro _objectivesText;
     private List<Objective> _objectivesList = new List<Objective>();
 
-    private void Start()
-    {
-        Invoke("EnterJewelry", 1);
-        Invoke("Test", 2);
-        Invoke("Test", 3);
-    }
-
-    private void Test()
-    {
-        StealJewels(100);
-    }
-
     public void AddObjective(string description, ObjectiveType type, int amountToReach = 0)
     {
         _objectivesList.Add(new Objective(description, type, amountToReach));
