@@ -36245,7 +36245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: {fileID: 6679691440208031961}
   _objectivesManager: {fileID: 17041331}
-  _doorTrigger: {fileID: 0}
+  _doorTrigger: {fileID: 2001470756}
 --- !u!4 &1608403593
 Transform:
   m_ObjectHideFlags: 0
