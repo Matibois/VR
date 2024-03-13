@@ -5,11 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
-/* ObjectivesManager :
-- possède tout les objectifs
-- declenche des events lorqu’on set un bool (qui resulte d’une action du joueur)
-- dans update du gamemanger verifier si les events sont done ou pas
-*/
+
 public class ObjectivesManager : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _objectivesText;
