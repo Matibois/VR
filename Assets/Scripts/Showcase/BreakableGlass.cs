@@ -25,7 +25,7 @@ public class BreakableGlass : MonoBehaviour
         if (collision.collider == null)
             return;
 
-        if (!collision.collider.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("Player"))
             return;
 
         // Obtient le point d'impact de la collision

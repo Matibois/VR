@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Bag : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Bag : MonoBehaviour
         }
     }
 
-    public void DeactivatePreview()
+    public void DeactivatePreview(SelectExitEventArgs args)
     {
         ColliderMesh.enabled = false;
     }
