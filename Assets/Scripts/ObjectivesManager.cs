@@ -62,7 +62,8 @@ public class ObjectivesManager : MonoBehaviour
             if (objective.IsCompleted)
             {
                 objectivesString += "<s>" + "- " + desc + "</s>" + "\n";
-            } else
+            }
+            else
             {
                 objectivesString += "- " + desc + "\n";
             }
