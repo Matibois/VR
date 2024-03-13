@@ -10,10 +10,10 @@ using UnityEngine.XR.Interaction.Toolkit.Filtering;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class Pickable : MonoBehaviour
 {
-    private bool isPicked;
-    private bool nearBag;
+    protected bool isPicked;
+    protected bool nearBag;
 
-    public Bag bag;
+    private Bag bag;
 
     private void Start()
     {
