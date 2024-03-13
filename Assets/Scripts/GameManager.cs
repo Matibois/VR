@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        _timer.StartTimer();
     }
 
     public void EnterJewelry()

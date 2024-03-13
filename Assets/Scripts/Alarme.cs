@@ -21,7 +21,7 @@ public class Alarme : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         
@@ -60,7 +60,7 @@ public class Alarme : MonoBehaviour
         {
             codeString += buttonID;
             if (codeString.Length ==4) TestCode();
-            textCode.text = codeString;
+            textCode.SetText(codeString);
         }
     }
 
