@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public ObjectivesManager ObjectivesManager => _objectivesManager;
     public GameObject DoorTrigger => _doorTrigger;
 
-    public ObjectivesManager ObjectivesManager => _objectivesManager;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
