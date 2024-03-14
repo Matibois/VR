@@ -5,17 +5,22 @@ using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject timer;
+    [SerializeField] private GameObject winCanva;
+    [SerializeField] private GameObject looseCanva;
+    [SerializeField] private GameObject menuCanva;
+
     [SerializeField] private Transform hand;
     [SerializeField] private Transform head;
+
     public float spawnDistance = 0.3f;
 
     [SerializeField] Vector3 _offset;
+    public InputActionProperty MenuBUtton;
 
-    public float tempy; 
-    public float tempz; 
-    
-    [SerializeField] private GameObject canvas;
-    public InputActionProperty DisplayUI;
+    private bool _winActive = false;
+    private bool _looseActive = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -26,17 +31,39 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        canvas.transform.position = hand.position + hand.transform.forward;
+        //timer.transform.position = hand.position ;
+        //timer.transform.Translate(_offset, Space.Self);
+        //timer.transform.LookAt(new Vector3 (head.position.x, head.position.y, 0));
 
-        canvas.transform.LookAt(new Vector3 (head.position.x, head.position.y, head.transform.position.z));
-
-        canvas.transform.Translate(_offset, Space.Self);
-
-
-        if (DisplayUI.action.WasPressedThisFrame())
+        if (MenuBUtton.action.WasPressedThisFrame())
         {
-            canvas.SetActive(!canvas.activeSelf);
+            DiplayMenu();
         }
-        //canvas.transform.position = head.position + new Vector3(head.forward.x, tempy, head.forward.z+tempz).normalized * spawnDistance;
+
+        
+        menuCanva.transform.position = head.position + head.transform.forward*0.5f;
+        menuCanva.transform.Translate(new Vector3(0,0,0.5f), Space.Self);
+
+        menuCanva.transform.forward = head.transform.forward;
+        //menuCanva.transform.LookAt(new Vector3(head.position.x, head.position.y, head.transform.position.z));
+        
+    }
+
+    private void DiplayMenu()
+    {
+        menuCanva.SetActive(!menuCanva.activeSelf);
+        //menuCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+    }
+
+    public void DisplayWin()
+    {
+        winCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        winCanva.SetActive(true);
+    }
+
+    public void DisplayLoose()
+    {
+        looseCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        looseCanva.SetActive(true);
     }
 }
