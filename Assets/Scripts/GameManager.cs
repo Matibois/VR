@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Lose");
         _policeCar.SetActive(true);
-        _UIManager.DisplayWin();
+        _UIManager.DisplayLoose();
         Invoke("Restart", 5);
     }
 
