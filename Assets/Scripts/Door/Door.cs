@@ -30,6 +30,7 @@ public class Door : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _openingSpeed);
             if (transform.rotation == _targetRotation)
             {
+                GameManager.Instance.ObjectivesManager.EnterJewelry();
                 _isOpening = false;
                 enabled = false;
             }
