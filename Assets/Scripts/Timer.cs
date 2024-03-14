@@ -11,7 +11,8 @@ public class Timer : MonoBehaviour
     public float _initialTime = 180.0f;
     private float _timeRemaining;
 
-    private bool _timerIsRunning = false;
+    public bool _timerIsRunning = false;
+    public bool _finish = false;
 
     public void StartTimer()
     {
@@ -35,6 +36,7 @@ public class Timer : MonoBehaviour
                 _timeRemaining = 0;
                 // Game Over !
                 _timerIsRunning = false;
+                GameManager.Instance.Lose();
             }
         }
     }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Timer _timer;
     [SerializeField] private Alarme _alarme;
-    [SerializeField] private ObjectivesManager _objectivesManager;
+    [SerializeField] public ObjectivesManager _objectivesManager;
     [SerializeField] private Objective _objective;
     [SerializeField] private GameObject _doorTrigger;
     [SerializeField] private GameObject _policeCar;

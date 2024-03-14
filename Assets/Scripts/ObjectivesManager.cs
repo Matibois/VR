@@ -7,6 +7,7 @@ public class ObjectivesManager : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _objectivesText;
     private List<Objective> _objectivesList = new List<Objective>();
+    public bool _HasEnteredJewerly = false;
 
     public void AddObjective(string description, ObjectiveType type, int amountToReach = 0)
     {
@@ -16,6 +17,7 @@ public class ObjectivesManager : MonoBehaviour
     public void EnterJewelry()
     {
         MarkObjectiveAsCompleted(0);
+        _HasEnteredJewerly = true;
     }
 
     public void DisarmAlarm()
