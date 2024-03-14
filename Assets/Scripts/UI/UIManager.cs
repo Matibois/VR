@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject menuCanva;
 
 
-    [SerializeField] private TextMeshProUGUI displayValuePick;
+    [SerializeField] private GameObject displayValuePick;
+    [SerializeField] private TextMeshProUGUI text;
     Coroutine display;
 
     [SerializeField] private Transform hand;
@@ -97,7 +98,7 @@ public class UIManager : MonoBehaviour
 
     public void DisplayMenuPickValue(int value)
     {
-        displayValuePick.text = "+ " + value.ToString() + "€";
+        text.text = "+ " + value.ToString() + "€";
         displayValuePick.gameObject.SetActive(true);
     }
     public void StopDisplayPickValue()
