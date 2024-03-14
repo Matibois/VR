@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
         _amountToSteal = 3000;
         SetObjectives();
         _timer.StartTimer();
-        //_doorTrigger.SetActive(false);
+        _doorTrigger.SetActive(false);
         _policeCar.SetActive(false);
     }
     
@@ -56,6 +57,12 @@ public class GameManager : MonoBehaviour
         _objectivesManager.StealJewels(value);
     }
 
+    public void GlassBroken()
+    {
+        if (!_objectivesManager.IsAlarmDisarmed())
+            Lose();
+    }
+
     public void Win()
     {
         Debug.Log("Win");
@@ -67,7 +74,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Lose");
         _policeCar.SetActive(true);
         _UIManager.DisplayWin();
-        //Invoke("Restart", 5);
+        Invoke("Restart", 5);
     }
 
     private void Restart()

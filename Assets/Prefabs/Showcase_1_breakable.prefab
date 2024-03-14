@@ -10337,6 +10337,7 @@ MonoBehaviour:
   _glassFractured: {fileID: 5429998098755515298}
   _minForceToBreakGlass: 0.2
   _breakGlassAudioSource: {fileID: 6858173215507560517}
+  _causeAlarmWhenBroken: 1
 --- !u!64 &4830791174619528385
 MeshCollider:
   m_ObjectHideFlags: 0
