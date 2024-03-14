@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using static Unity.Burst.Intrinsics.X86.Avx;
-
 
 public class ObjectivesManager : MonoBehaviour
 {
@@ -41,6 +38,11 @@ public class ObjectivesManager : MonoBehaviour
     public void Flee()
     {
         MarkObjectiveAsCompleted(4);
+
+        if(CheckIfEnoughValueIsStolen())
+            GameManager.Instance.Win();
+        else 
+            GameManager.Instance.Lose();
     }
 
     public void InitObjectivesText()
@@ -48,7 +50,7 @@ public class ObjectivesManager : MonoBehaviour
         UpdateText(); 
     }
 
-    public void UpdateText()
+    private void UpdateText()
     {
         string objectivesString = "";
         foreach (Objective objective in _objectivesList)
@@ -72,10 +74,15 @@ public class ObjectivesManager : MonoBehaviour
         _objectivesText.text = objectivesString;
     }
 
-    public void MarkObjectiveAsCompleted(int index)
+    private void MarkObjectiveAsCompleted(int index)
     {
         _objectivesList[index].MarkAsCompleted();
         UpdateText();
+    }
+
+    private bool CheckIfEnoughValueIsStolen()
+    {
+        return _objectivesList[2].IsCompleted;
     }
 }
 

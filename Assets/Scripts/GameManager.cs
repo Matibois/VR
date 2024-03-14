@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,14 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ObjectivesManager _objectivesManager;
     [SerializeField] private Objective _objective;
     [SerializeField] private GameObject _doorTrigger;
+    [SerializeField] private GameObject _policeCar;
     private int _amountToSteal;
 
     public ObjectivesManager ObjectivesManager => _objectivesManager;
     public GameObject DoorTrigger => _doorTrigger;
-
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
 
     private void Awake()
     {
@@ -39,39 +38,14 @@ public class GameManager : MonoBehaviour
         SetObjectives();
         _timer.StartTimer();
         _doorTrigger.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-    public void EnterJewelry()
-    {
-        _hasEnteredJewelry = true;
-
-        if (_timer != null)
-            _alarme._timer.StartTimer();
-        else
-            Debug.LogError("_timer is null !");
-    }
-
-    public void DisarmAlarm() 
-    { 
-        _hasDisarmedAlarm = true;
-        _timer.StartTimer();
-    }
-
-    public void Flee() 
-    { 
-        _hasFled = true; 
+        _policeCar.SetActive(false);
     }
     
     private void SetObjectives()
     {
         _objectivesManager.AddObjective("Entrer dans la bijouterie", ObjectiveType.Simple);
-        _objectivesManager.AddObjective("D�sactiver l'alarme", ObjectiveType.Simple);
-        _objectivesManager.AddObjective($"Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
+        _objectivesManager.AddObjective("Désactiver l'alarme", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
         _objectivesManager.AddObjective("Voler le contenu du coffre-fort", ObjectiveType.Simple);
         _objectivesManager.AddObjective("S'enfuir avant la fin du temps imparti", ObjectiveType.Simple);
         _objectivesManager.InitObjectivesText();
@@ -85,5 +59,16 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    public void Win()
+    {
+        Debug.Log("Win");
+    }
+
+    public void Lose()
+    {
+        Debug.Log("Lose");
+        _policeCar.SetActive(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

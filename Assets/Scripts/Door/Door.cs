@@ -30,6 +30,7 @@ public class Door : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _openingSpeed);
             if (transform.rotation == _targetRotation)
             {
+                GameManager.Instance.ObjectivesManager.EnterJewelry();
                 _isOpening = false;
                 enabled = false;
             }
@@ -37,7 +38,8 @@ public class Door : MonoBehaviour
         {
             if(IsGlassBroken() && _glassBroken == false && _isOpening == false)
             {
-                _glassBroken = false;
+                _glassBroken = true;
+                GameManager.Instance.Lose();
             }
         }
     }

@@ -5,17 +5,17 @@ using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(XRGrabInteractable))]
 public class Pickable : MonoBehaviour
 {
-    private bool isPicked;
-    private bool nearBag;
+    protected bool isPicked;
+    protected bool nearBag;
 
-    public Bag bag;
+    private Bag bag;
 
-    private void Start()
+    protected void Start()
     {
         isPicked = false;
         nearBag = false;
@@ -28,7 +28,7 @@ public class Pickable : MonoBehaviour
 
         inter.lastSelectExited.AddListener(SetIsNotPicked);
         inter.lastSelectExited.AddListener(TestPutInBag);
-        inter.lastSelectExited.AddListener(bag.DeactivatePreview);
+        inter.lastSelectExited.AddListener(bag.PickObject);
     }
 
     public void SetIsPicked(SelectEnterEventArgs args)
@@ -51,7 +51,7 @@ public class Pickable : MonoBehaviour
         nearBag = _nearBag;
     }
 
-    public void TestPutInBag(SelectExitEventArgs args)
+    public virtual void TestPutInBag(SelectExitEventArgs args)
     {
         if(nearBag)
         {
