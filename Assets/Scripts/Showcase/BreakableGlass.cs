@@ -21,18 +21,33 @@ public class BreakableGlass : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si la collision s'est produite avec un autre collider
+        // Vï¿½rifie si la collision s'est produite avec un autre collider
         if (collision.collider == null)
             return;
 
-        //if (!collision.collider.gameObject.CompareTag("Player"))
-        //    return;
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
 
         // Obtient le point d'impact de la collision
         ContactPoint contactPoint = collision.GetContact(0);
         Vector3 pointOfImpact = contactPoint.point;
         BreakGlass(pointOfImpact);
     }
+
+/*    private void OnTriggerEnter(Collider collision)
+    {
+        // Vï¿½rifie si la collision s'est produite avec un autre collider
+        if (collision == null)
+            return;
+
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
+        // Obtient le point d'impact de la collision
+      //  ContactPoint contactPoint = collision.GetContact(0);
+        Vector3 pointOfImpact = collision.transform.position;
+        BreakGlass(pointOfImpact);
+    }*/
 
     public void BreakGlass(Vector3 breakPos)
     {

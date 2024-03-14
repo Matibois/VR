@@ -3,78 +3,79 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
-/* ObjectivesManager :
-- possède tout les objectifs
-- declenche des events lorqu’on set un bool (qui resulte d’une action du joueur)
-- dans update du gamemanger verifier si les events sont done ou pas
-*/
+
 public class ObjectivesManager : MonoBehaviour
 {
-    public UnityEvent<string> _onObjectiveCompleted;
-    private List<string> _objectivesList;
     [SerializeField] private TextMeshPro _objectivesText;
+    private List<Objective> _objectivesList = new List<Objective>();
 
-    public void Init()
+    public void AddObjective(string description, ObjectiveType type, int amountToReach = 0)
     {
-        _onObjectiveCompleted = new UnityEvent<string>();
-        _objectivesList = new List<string>();
-        AddObjectives();
-        InitObjectivesText();
-    }
-
-    private void AddObjectives()
-    {
-        _objectivesList.Add("Entrer dans la bojouterie");
-        _objectivesList.Add("Désactiver l'alarme");
-        _objectivesList.Add("Voler les bijoux de la liste");
-        _objectivesList.Add("Voler le contenu du coffre-fort");
-        _objectivesList.Add("S'enfuir avant la fin du temps imparti");
+        _objectivesList.Add(new Objective(description, type, amountToReach));
     }
 
     public void EnterJewelry()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[0]);
+        MarkObjectiveAsCompleted(0);
     }
 
     public void DisarmAlarm()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[1]);
+        MarkObjectiveAsCompleted(1);
+        GameManager.Instance.DoorTrigger.SetActive(true);
     }
-    
-    public void StealJewels()
+
+    public void StealJewels(int value)
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[2]);
+        _objectivesList[2].UpdateProgress(value);
+        UpdateText();
     }
 
     public void StealSafe()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[3]);
+        MarkObjectiveAsCompleted(3);
     }
 
     public void Flee()
     {
-        _onObjectiveCompleted.Invoke(_objectivesList[4]);
+        MarkObjectiveAsCompleted(4);
     }
 
-    private void InitObjectivesText()
+    public void InitObjectivesText()
     {
-        // Construct a string containing all objectives
-        string objectivesString = "";
-        foreach (string objective in _objectivesList)
-        {
-            // Add each objective on a new line
-            objectivesString += "- " + objective + "\n";
-        }
+        UpdateText(); 
+    }
 
+    public void UpdateText()
+    {
+        string objectivesString = "";
+        foreach (Objective objective in _objectivesList)
+        {
+            string desc = objective.Description;
+            if(objective.Type == ObjectiveType.AmountToReach)
+            {
+                desc += " (" + objective.CurrentAmount + "/" + objective.AmountToReach + "€)";
+            }
+
+            if (objective.IsCompleted)
+            {
+                objectivesString += "<s>" + "- " + desc + "</s>" + "\n";
+            }
+            else
+            {
+                objectivesString += "- " + desc + "\n";
+            }
+        }
         // Update the text of the TextMeshPro object with the list of objectives
         _objectivesText.text = objectivesString;
     }
 
-    public void UpdateObjectivesText(string completedObjective)
+    public void MarkObjectiveAsCompleted(int index)
     {
-        // Find the objective you want to achieve in the text and replace it with the crossed-out version
-        _objectivesText.text = _objectivesText.text.Replace(completedObjective, "<s>" + completedObjective + "</s>");
+        _objectivesList[index].MarkAsCompleted();
+        UpdateText();
     }
 }
 
