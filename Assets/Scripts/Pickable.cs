@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(XRGrabInteractable))]
 public class Pickable : MonoBehaviour
@@ -55,7 +55,6 @@ public class Pickable : MonoBehaviour
     {
         if(nearBag)
         {
-            Debug.Log("parent");
             transform.gameObject.SetActive(false);
         }
     }

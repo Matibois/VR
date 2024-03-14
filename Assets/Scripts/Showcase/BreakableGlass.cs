@@ -8,6 +8,7 @@ public class BreakableGlass : MonoBehaviour
 {
     [SerializeField] GameObject _glass;
     [SerializeField] GameObject _glassFractured;
+    [SerializeField] private float _minForceToBreakGlass = 0.5f;
 
     void Start()
     {
@@ -28,26 +29,16 @@ public class BreakableGlass : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
             return;
 
-        // Obtient le point d'impact de la collision
-        ContactPoint contactPoint = collision.GetContact(0);
-        Vector3 pointOfImpact = contactPoint.point;
-        BreakGlass(pointOfImpact);
+        float mag = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        //Debug.Log(mag);
+        if (mag >= _minForceToBreakGlass)
+        {
+            // Obtient le point d'impact de la collision
+            ContactPoint contactPoint = collision.GetContact(0);
+            Vector3 pointOfImpact = contactPoint.point;
+            BreakGlass(pointOfImpact);
+        }
     }
-
-/*    private void OnTriggerEnter(Collider collision)
-    {
-        // V�rifie si la collision s'est produite avec un autre collider
-        if (collision == null)
-            return;
-
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
-
-        // Obtient le point d'impact de la collision
-      //  ContactPoint contactPoint = collision.GetContact(0);
-        Vector3 pointOfImpact = collision.transform.position;
-        BreakGlass(pointOfImpact);
-    }*/
 
     public void BreakGlass(Vector3 breakPos)
     {

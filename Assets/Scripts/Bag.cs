@@ -8,6 +8,7 @@ public class Bag : MonoBehaviour
     private float totalMoney;
 
     private MeshRenderer ColliderMesh;
+    private int nbObjCollide = 0;
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class Bag : MonoBehaviour
             {
                 if (pick.GetIsPicked())
                 {
+                    nbObjCollide++;
                     ColliderMesh.enabled = true;
                     pick.SetNearBag(true);
                 }
@@ -40,7 +42,9 @@ public class Bag : MonoBehaviour
             Pickable pick;
             if (other.gameObject.TryGetComponent<Pickable>(out pick))
             {
-                ColliderMesh.enabled = false;
+                nbObjCollide--;
+                if (nbObjCollide == 0)
+                    ColliderMesh.enabled = false;
                 pick.SetNearBag(false);
             }
         }
@@ -48,6 +52,9 @@ public class Bag : MonoBehaviour
 
     public void PickObject(SelectExitEventArgs args)
     {
-        ColliderMesh.enabled = false;
+        nbObjCollide--;
+        if (nbObjCollide == 0)
+            ColliderMesh.enabled = false;
+
     }
 }
