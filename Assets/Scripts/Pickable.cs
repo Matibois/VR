@@ -55,7 +55,6 @@ public class Pickable : MonoBehaviour
     {
         if(nearBag)
         {
-            Debug.Log("parent");
             transform.gameObject.SetActive(false);
         }
     }

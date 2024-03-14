@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI displayValuePick;
+    Coroutine display;
 
     [SerializeField] private Transform hand;
 
@@ -74,15 +76,36 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void HandlePickUI(int value)
+    {
+        if (display != null)
+        {
+            StopCoroutine(display);
+        }
+
+        display = StartCoroutine(DisplayPickValue(value));
+    }
+
+    IEnumerator DisplayPickValue(int value)
+    {
+        DisplayMenuPickValue(value);
+
+        yield return new WaitForSeconds(2);
+
+        StopDisplayPickValue();
+    }
+
     public void DisplayMenuPickValue(int value)
     {
-        displayValuePick.text = "+ " + value.ToString() + "�";
-        displayValuePick.gameObject.SetActive(!displayValuePick.gameObject.activeSelf);
+        displayValuePick.text = "+ " + value.ToString() + "€";
+        displayValuePick.gameObject.SetActive(true);
     }
     public void StopDisplayPickValue()
     {
-        displayValuePick.gameObject.SetActive(!displayValuePick.gameObject.activeSelf);
+        displayValuePick.gameObject.SetActive(false);
     }
+
+
 
     private void DiplayMenu()
     {

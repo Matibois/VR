@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         _amountToSteal = 3000;
         SetObjectives();
         _timer.StartTimer();
-        _doorTrigger.SetActive(false);
+        //_doorTrigger.SetActive(false);
     }
     
     private void SetObjectives()

@@ -21,7 +21,6 @@ public class BreakableGlass : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         // V�rifie si la collision s'est produite avec un autre collider
         if (collision.collider == null)
             return;
