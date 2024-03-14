@@ -8,7 +8,8 @@ public class BreakableGlass : MonoBehaviour
 {
     [SerializeField] GameObject _glass;
     [SerializeField] GameObject _glassFractured;
-    [SerializeField] private float _minForceToBreakGlass = 0.5f;
+    [SerializeField] private float _minForceToBreakGlass = 0.2f;
+    [SerializeField] private AudioSource _breakGlassAudioSource;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class BreakableGlass : MonoBehaviour
             ContactPoint contactPoint = collision.GetContact(0);
             Vector3 pointOfImpact = contactPoint.point;
             BreakGlass(pointOfImpact);
+            _breakGlassAudioSource.Play();
         }
     }
 

@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Lose");
         _policeCar.SetActive(true);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Invoke("Restart", 5);
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
