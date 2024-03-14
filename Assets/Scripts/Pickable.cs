@@ -14,31 +14,46 @@ public class Pickable : MonoBehaviour
     protected bool nearBag;
 
     private Bag bag;
+    protected XRGrabInteractable inter;
+
+    protected Rigidbody rb;
 
     protected void Start()
     {
         isPicked = false;
         nearBag = false;
 
-        XRGrabInteractable inter = GetComponent<XRGrabInteractable>();
+        inter = GetComponent<XRGrabInteractable>();
+        inter.movementType = XRBaseInteractable.MovementType.VelocityTracking;
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+
+        // Put convex at true for mesh colliders
+        MeshCollider temp;
+        TryGetComponent<MeshCollider>(out temp);
+        if (temp != null)
+            temp.convex = true;
+
+
         bag = GameObject.FindGameObjectWithTag("BagCollider").GetComponent<Bag>();
 
 
         inter.firstSelectEntered.AddListener(SetIsPicked);
 
         inter.lastSelectExited.AddListener(SetIsNotPicked);
-        inter.lastSelectExited.AddListener(TestPutInBag);
         inter.lastSelectExited.AddListener(bag.PickObject);
     }
 
     public void SetIsPicked(SelectEnterEventArgs args)
     {
         isPicked = true;
+        rb.isKinematic = false;
     }
 
     public void SetIsNotPicked(SelectExitEventArgs args)
     {
         isPicked = false;
+        rb.isKinematic = false;
     }
 
     public bool GetIsPicked()
@@ -51,11 +66,11 @@ public class Pickable : MonoBehaviour
         nearBag = _nearBag;
     }
 
-    public virtual void TestPutInBag(SelectExitEventArgs args)
+/*    public virtual void TestPutInBag(SelectExitEventArgs args)
     {
         if(nearBag)
         {
             transform.gameObject.SetActive(false);
         }
-    }
+    }*/
 }

@@ -11,6 +11,10 @@ public class Jewerly : Pickable
     new void Start()
     {
         base.Start();
+
+
+        inter.lastSelectExited.AddListener(TestPutInBag);
+
     }
 
     // Update is called once per frame
@@ -19,7 +23,7 @@ public class Jewerly : Pickable
         
     }
 
-    public override void TestPutInBag(SelectExitEventArgs args)
+    public void TestPutInBag(SelectExitEventArgs args)
     {
         if (nearBag)
         {
