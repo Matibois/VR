@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _amountToSteal = 3000;
+        _amountToSteal = 10000;
         SetObjectives();
         _timer.StartTimer();
         _doorTrigger.SetActive(false);
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Lose");
         _policeCar.SetActive(true);
-        _UIManager.DisplayWin();
+        _UIManager.DisplayLoose();
         Invoke("Restart", 5);
     }
 
