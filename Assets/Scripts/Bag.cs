@@ -22,12 +22,12 @@ public class Bag : MonoBehaviour
     {
         if (other.gameObject.tag == "Pickable")
         {
-            Pickable pick;
-            if (other.gameObject.TryGetComponent<Pickable>(out pick))
+            Jewerly pick;
+            if (other.gameObject.TryGetComponent<Jewerly>(out pick))
             {
+                nbObjCollide++;
                 if (pick.GetIsPicked())
                 {
-                    nbObjCollide++;
                     ColliderMesh.enabled = true;
                     pick.SetNearBag(true);
                 }
@@ -39,8 +39,8 @@ public class Bag : MonoBehaviour
     {
         if (other.gameObject.tag == "Pickable")
         {
-            Pickable pick;
-            if (other.gameObject.TryGetComponent<Pickable>(out pick))
+            Jewerly pick;
+            if (other.gameObject.TryGetComponent<Jewerly>(out pick))
             {
                 nbObjCollide--;
                 if (nbObjCollide == 0)
@@ -50,11 +50,10 @@ public class Bag : MonoBehaviour
         }
     }
 
-    public void PickObject(SelectExitEventArgs args)
+    public void PickObject()
     {
         nbObjCollide--;
         if (nbObjCollide == 0)
             ColliderMesh.enabled = false;
-
     }
 }

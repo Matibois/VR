@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject displayValuePick;
     [SerializeField] private GameObject objectivesUI;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI textValuePick;
     Coroutine display;
 
     [SerializeField] private Transform hand;
@@ -75,8 +75,8 @@ public class UIManager : MonoBehaviour
         menuCanva.transform.Translate(new Vector3(0,0,0.5f), Space.Self);
         menuCanva.transform.forward = head.transform.forward;
 
-        displayValuePick.transform.position = head.position + head.transform.forward * 0.5f;
-        displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+        displayValuePick.transform.position = head.position + head.transform.forward * 0.1f;
+        //displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
         displayValuePick.transform.forward = head.transform.forward;
         //menuCanva.transform.LookAt(new Vector3(head.position.x, head.position.y, head.transform.position.z));
 
@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
 
     public void DisplayMenuPickValue(int value)
     {
-        text.text = "+ " + value.ToString() + "€";
+        textValuePick.text = "+ " + value.ToString() + "€";
         displayValuePick.gameObject.SetActive(true);
     }
     public void StopDisplayPickValue()
