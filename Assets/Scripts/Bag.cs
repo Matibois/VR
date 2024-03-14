@@ -46,7 +46,7 @@ public class Bag : MonoBehaviour
         }
     }
 
-    public void DeactivatePreview(SelectExitEventArgs args)
+    public void PickObject(SelectExitEventArgs args)
     {
         ColliderMesh.enabled = false;
     }

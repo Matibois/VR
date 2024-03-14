@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Jewerly : Pickable
 {
-    public float value;
+    public int value;
 
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class Jewerly : Pickable
         if (nearBag)
         {
             transform.gameObject.SetActive(false);
+            GameManager.Instance.JewelStolen(value);
         }
     }
 }

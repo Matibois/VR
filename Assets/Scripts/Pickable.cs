@@ -28,7 +28,7 @@ public class Pickable : MonoBehaviour
 
         inter.lastSelectExited.AddListener(SetIsNotPicked);
         inter.lastSelectExited.AddListener(TestPutInBag);
-        inter.lastSelectExited.AddListener(bag.DeactivatePreview);
+        inter.lastSelectExited.AddListener(bag.PickObject);
     }
 
     public void SetIsPicked(SelectEnterEventArgs args)
