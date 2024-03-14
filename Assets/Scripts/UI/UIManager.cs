@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
 
     private bool _winActive = false;
     private bool _looseActive = false;
+    private bool _menuActive = false;
 
 
     private void Awake()
@@ -47,33 +48,46 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        _winActive = false;
+        _looseActive = false;
+        _menuActive = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
 
-        //timer.transform.position = hand.position ;
-        //timer.transform.Translate(_offset, Space.Self);
-        //timer.transform.LookAt(new Vector3 (head.position.x, head.position.y, 0));
 
         if (MenuBUtton.action.WasPressedThisFrame())
         {
             DiplayMenu();
         }
 
-        
-/*        menuCanva.transform.position = head.position + head.transform.forward*0.5f;
-        menuCanva.transform.Translate(new Vector3(0,0,0.5f), Space.Self);
 
-        menuCanva.transform.forward = head.transform.forward;*/
-
-        displayValuePick.transform.position = head.position + head.transform.forward * 0.5f;
+        displayValuePick.transform.position = head.position + head.transform.forward * 0.5f; 
         displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
-
         displayValuePick.transform.forward = head.transform.forward;
-        //menuCanva.transform.LookAt(new Vector3(head.position.x, head.position.y, head.transform.position.z));
+
+        if (_menuActive)
+        {
+            menuCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            menuCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            menuCanva.transform.forward = head.transform.forward;
+        }
+
+        if(_winActive)
+        {
+            winCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            winCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            winCanva.transform.forward = head.transform.forward;
+        }
+
+        if (_looseActive)
+        {
+            looseCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            looseCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            looseCanva.transform.forward = head.transform.forward;
+        }
 
     }
 
@@ -110,19 +124,22 @@ public class UIManager : MonoBehaviour
 
     private void DiplayMenu()
     {
-        menuCanva.SetActive(!menuCanva.activeSelf);
+        _menuActive = !_menuActive;
         menuCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        menuCanva.SetActive(!menuCanva.activeSelf);
     }
 
     public void DisplayWin()
     {
         winCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         winCanva.SetActive(true);
+        _winActive = true;
     }
 
     public void DisplayLoose()
     {
         looseCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         looseCanva.SetActive(true);
+        _looseActive = true;
     }
 }
