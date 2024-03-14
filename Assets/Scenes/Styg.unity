@@ -4860,7 +4860,7 @@ MonoBehaviour:
   menuCanva: {fileID: 1852211131}
   displayValuePick: {fileID: 42772169}
   objectivesUI: {fileID: 7031078301734019893}
-  text: {fileID: 413598995}
+  textValuePick: {fileID: 413598995}
   head: {fileID: 1271395098}
   spawnDistance: 1
   _offset: {x: -0.01, y: -0.08, z: 1.12}
