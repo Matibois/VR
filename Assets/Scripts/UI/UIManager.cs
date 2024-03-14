@@ -14,9 +14,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject looseCanva;
     [SerializeField] private GameObject menuCanva;
 
+
     [SerializeField] private TextMeshProUGUI displayValuePick;
 
     [SerializeField] private Transform hand;
+
     [SerializeField] private Transform head;
 
     public float spawnDistance = 0.3f;
@@ -74,7 +76,7 @@ public class UIManager : MonoBehaviour
 
     public void DisplayMenuPickValue(int value)
     {
-        displayValuePick.text = "+ " + value.ToString() + "€";
+        displayValuePick.text = "+ " + value.ToString() + "ï¿½";
         displayValuePick.gameObject.SetActive(!displayValuePick.gameObject.activeSelf);
     }
     public void StopDisplayPickValue()
