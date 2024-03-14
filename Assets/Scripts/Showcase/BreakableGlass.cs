@@ -8,7 +8,7 @@ public class BreakableGlass : MonoBehaviour
 {
     [SerializeField] GameObject _glass;
     [SerializeField] GameObject _glassFractured;
-    [SerializeField] private float _minForceToBreakGlass = 0.5f;
+    [SerializeField] private float _minForceToBreakGlass = 0.2f;
 
     void Start()
     {
