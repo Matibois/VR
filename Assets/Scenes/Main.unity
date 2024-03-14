@@ -1970,10 +1970,6 @@ PrefabInstance:
       value: SM_necklace_2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6601848382044380331, guid: 8d988294bdfd89c43b09e6c87025e27a, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6601848382044380331, guid: 8d988294bdfd89c43b09e6c87025e27a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00010976195
       objectReference: {fileID: 0}
@@ -17408,10 +17404,6 @@ PrefabInstance:
       value: SM_necklace_5 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1814780424772298152, guid: e28d78a5c99a0024d9cf7ae9651e7ca4, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814780424772298152, guid: e28d78a5c99a0024d9cf7ae9651e7ca4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00069993734
       objectReference: {fileID: 0}
@@ -20425,6 +20417,9 @@ MonoBehaviour:
   winCanva: {fileID: 1000475448}
   looseCanva: {fileID: 1535809646}
   menuCanva: {fileID: 915477157}
+  displayValuePick: {fileID: 0}
+  text: {fileID: 0}
+  hand: {fileID: 0}
   head: {fileID: 56773148}
   spawnDistance: 1
   _offset: {x: -0.01, y: -0.08, z: 1.12}
@@ -43511,7 +43506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49630e5839c5647498ba2db1e822e7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColliderMesh: {fileID: 0}
 --- !u!65 &1556243476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47736,7 +47730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20488da1cd402e840bb30643c9fbe2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bag: {fileID: 0}
 --- !u!114 &1715999699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48250,6 +48243,7 @@ MonoBehaviour:
   _alarme: {fileID: 1571768329}
   _objectivesManager: {fileID: 504826558}
   _doorTrigger: {fileID: 538486247}
+  _policeCar: {fileID: 0}
 --- !u!4 &1729722106
 Transform:
   m_ObjectHideFlags: 0
