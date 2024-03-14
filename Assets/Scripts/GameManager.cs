@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _amountToSteal = 3000;
+        _amountToSteal = 10000;
         SetObjectives();
         _timer.StartTimer();
         _doorTrigger.SetActive(false);
