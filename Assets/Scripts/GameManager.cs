@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ObjectivesManager _objectivesManager;
     [SerializeField] private Objective _objective;
     [SerializeField] private GameObject _doorTrigger;
+    [SerializeField] private GameObject _policeCar;
     private int _amountToSteal;
 
     public ObjectivesManager ObjectivesManager => _objectivesManager;
@@ -35,7 +36,8 @@ public class GameManager : MonoBehaviour
         _amountToSteal = 3000;
         SetObjectives();
         _timer.StartTimer();
-        //_doorTrigger.SetActive(false);
+        _doorTrigger.SetActive(false);
+        _policeCar.SetActive(false);
     }
     
     private void SetObjectives()
@@ -61,5 +63,6 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         Debug.Log("Lose");
+        _policeCar.SetActive(true);
     }
 }
