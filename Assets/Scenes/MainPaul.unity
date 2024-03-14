@@ -27177,6 +27177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997b2a9160aecc84892c137abcfb3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhysicsEnable: 0
   value: 1990
 --- !u!114 &1004559358
 MonoBehaviour:
@@ -42507,6 +42508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997b2a9160aecc84892c137abcfb3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhysicsEnable: 0
   value: 1000
 --- !u!114 &1574146751
 MonoBehaviour:
@@ -43497,6 +43499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20488da1cd402e840bb30643c9fbe2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhysicsEnable: 0
 --- !u!114 &1589932363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56445,6 +56448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997b2a9160aecc84892c137abcfb3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhysicsEnable: 0
   value: 1500
 --- !u!114 &2143011936
 MonoBehaviour:

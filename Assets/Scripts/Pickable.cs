@@ -17,6 +17,7 @@ public class Pickable : MonoBehaviour
     protected XRGrabInteractable inter;
 
     protected Rigidbody rb;
+    public bool PhysicsEnable;
 
     protected void Start()
     {
@@ -26,7 +27,7 @@ public class Pickable : MonoBehaviour
         inter = GetComponent<XRGrabInteractable>();
         inter.movementType = XRBaseInteractable.MovementType.VelocityTracking;
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        rb.isKinematic = PhysicsEnable;
 
         // Put convex at true for mesh colliders
         MeshCollider temp;
