@@ -21,7 +21,7 @@ public class BreakableGlass : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si la collision s'est produite avec un autre collider
+        // Vï¿½rifie si la collision s'est produite avec un autre collider
         if (collision.collider == null)
             return;
 
@@ -36,7 +36,7 @@ public class BreakableGlass : MonoBehaviour
 
 /*    private void OnTriggerEnter(Collider collision)
     {
-        // Vérifie si la collision s'est produite avec un autre collider
+        // Vï¿½rifie si la collision s'est produite avec un autre collider
         if (collision == null)
             return;
 
@@ -53,6 +53,7 @@ public class BreakableGlass : MonoBehaviour
     {
         _glass.SetActive(false);
         _glassFractured.SetActive(true);
+        _glassFractured.transform.parent = null;
 
         Transform transform = _glassFractured.transform;
 
