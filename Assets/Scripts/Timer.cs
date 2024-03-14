@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _timeText; // UI
-    private float _initialTime = 180.0f;
+    [SerializeField] private TextMeshProUGUI _timeTextCanva; // UI
+    [SerializeField] private TextMeshPro _timeText; // UI
+    public float _initialTime = 180.0f;
     private float _timeRemaining;
 
     private bool _timerIsRunning = false;
@@ -45,6 +46,7 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        _timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (_timeText != null)_timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        else _timeTextCanva.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
