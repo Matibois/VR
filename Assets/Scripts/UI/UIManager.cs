@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textValuePick;
     Coroutine display;
 
-    [SerializeField] private Transform hand;
+    //[SerializeField] private Transform hand;
 
     [SerializeField] private Transform head;
 

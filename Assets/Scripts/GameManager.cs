@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Timer _timer;
     [SerializeField] private Alarme _alarme;
     [SerializeField] private ObjectivesManager _objectivesManager;
-    [SerializeField] private Objective _objective;
+    [SerializeField] private UIManager _UIManager;
     [SerializeField] private GameObject _doorTrigger;
     [SerializeField] private GameObject _policeCar;
     private int _amountToSteal;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _amountToSteal = 3000;
+        _amountToSteal = 10000;
         SetObjectives();
         _timer.StartTimer();
         _doorTrigger.SetActive(false);
@@ -56,15 +57,23 @@ public class GameManager : MonoBehaviour
         _objectivesManager.StealJewels(value);
     }
 
+    public void GlassBroken()
+    {
+        if (!_objectivesManager.IsAlarmDisarmed())
+            Lose();
+    }
+
     public void Win()
     {
         Debug.Log("Win");
+        _UIManager.DisplayWin();
     }
 
     public void Lose()
     {
         Debug.Log("Lose");
         _policeCar.SetActive(true);
+        _UIManager.DisplayWin();
         Invoke("Restart", 5);
     }
 
