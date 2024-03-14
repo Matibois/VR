@@ -13,7 +13,7 @@ public class Pickable : MonoBehaviour
     protected bool isPicked;
     protected bool nearBag;
 
-    private Bag bag;
+    protected Bag bag;
     protected XRGrabInteractable inter;
 
     protected Rigidbody rb;
@@ -41,7 +41,7 @@ public class Pickable : MonoBehaviour
         inter.firstSelectEntered.AddListener(SetIsPicked);
 
         inter.lastSelectExited.AddListener(SetIsNotPicked);
-        inter.lastSelectExited.AddListener(bag.PickObject);
+        //inter.lastSelectExited.AddListener(bag.PickObject);
     }
 
     public void SetIsPicked(SelectEnterEventArgs args)

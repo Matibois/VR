@@ -27,9 +27,9 @@ public class Jewerly : Pickable
     {
         if (nearBag)
         {
-
             GameManager.Instance.JewelStolen(value);
             UIManager.Instance.HandlePickUI(value);
+            bag.PickObject();
             transform.gameObject.SetActive(false);
         }
     }

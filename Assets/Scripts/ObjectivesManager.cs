@@ -49,6 +49,11 @@ public class ObjectivesManager : MonoBehaviour
             GameManager.Instance.Lose();
     }
 
+    public bool IsAlarmDisarmed()
+    {
+        return _objectivesList[1].IsCompleted;
+    }
+
     public void InitObjectivesText()
     {
         UpdateText(); 

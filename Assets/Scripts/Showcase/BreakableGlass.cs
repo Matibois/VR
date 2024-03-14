@@ -10,6 +10,7 @@ public class BreakableGlass : MonoBehaviour
     [SerializeField] GameObject _glassFractured;
     [SerializeField] private float _minForceToBreakGlass = 0.2f;
     [SerializeField] private AudioSource _breakGlassAudioSource;
+    [SerializeField] private bool _causeAlarmWhenBroken = true;
 
     void Start()
     {
@@ -55,5 +56,8 @@ public class BreakableGlass : MonoBehaviour
             GameObject child = transform.GetChild(i).gameObject;
             child.GetComponent<Rigidbody>().AddExplosionForce(100, breakPos, 10);
         }
+
+        if (_causeAlarmWhenBroken)
+            GameManager.Instance.GlassBroken();
     }
 }

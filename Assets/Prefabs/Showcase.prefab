@@ -9502,6 +9502,7 @@ MonoBehaviour:
   _glassFractured: {fileID: 6408614167261684560}
   _minForceToBreakGlass: 0.2
   _breakGlassAudioSource: {fileID: 2418599489350794102}
+  _causeAlarmWhenBroken: 1
 --- !u!1 &5331297666467016085
 GameObject:
   m_ObjectHideFlags: 0
