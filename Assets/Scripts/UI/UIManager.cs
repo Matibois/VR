@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private GameObject displayValuePick;
+    [SerializeField] private GameObject objectivesUI;
     [SerializeField] private TextMeshProUGUI text;
     Coroutine display;
 
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Vector3 _offset;
     public InputActionProperty MenuBUtton;
+    public InputActionProperty ObjectivesButton;
 
     private bool _winActive = false;
     private bool _looseActive = false;
@@ -63,15 +65,18 @@ public class UIManager : MonoBehaviour
             DiplayMenu();
         }
 
-        
-/*        menuCanva.transform.position = head.position + head.transform.forward*0.5f;
-        menuCanva.transform.Translate(new Vector3(0,0,0.5f), Space.Self);
+        if (ObjectivesButton.action.WasPressedThisFrame())
+        {
+            objectivesUI.SetActive(!objectivesUI.activeSelf);
+        }
 
-        menuCanva.transform.forward = head.transform.forward;*/
+        
+        menuCanva.transform.position = head.position + head.transform.forward*0.5f;
+        menuCanva.transform.Translate(new Vector3(0,0,0.5f), Space.Self);
+        menuCanva.transform.forward = head.transform.forward;
 
         displayValuePick.transform.position = head.position + head.transform.forward * 0.5f;
         displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
-
         displayValuePick.transform.forward = head.transform.forward;
         //menuCanva.transform.LookAt(new Vector3(head.position.x, head.position.y, head.transform.position.z));
 
