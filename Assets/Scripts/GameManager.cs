@@ -56,4 +56,14 @@ public class GameManager : MonoBehaviour
     {
         _objectivesManager.StealJewels(value);
     }
+
+    public void Win()
+    {
+        Debug.Log("Win");
+    }
+
+    public void Lose()
+    {
+        Debug.Log("Lose");
+    }
 }

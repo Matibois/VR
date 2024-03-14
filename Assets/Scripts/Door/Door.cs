@@ -37,7 +37,8 @@ public class Door : MonoBehaviour
         {
             if(IsGlassBroken() && _glassBroken == false && _isOpening == false)
             {
-                _glassBroken = false;
+                _glassBroken = true;
+                GameManager.Instance.Lose();
             }
         }
     }
