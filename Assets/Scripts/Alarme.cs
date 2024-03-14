@@ -15,9 +15,11 @@ public class Alarme : MonoBehaviour
     private string _codeToFind = "3141";
 
     [SerializeField] public Timer _timer;
-    private bool wait = false;
 
+    public bool _timeout = true;
 
+    [SerializeField] private Material _MButton;
+    [SerializeField] private Material _MButtonHover;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +30,7 @@ public class Alarme : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        if (wait)
-        {
-
-        }
+        
     }
 
     public void TestCode()
@@ -62,6 +61,32 @@ public class Alarme : MonoBehaviour
         }
     }
 
+    public void HoverButton(HoverEnterEventArgs hoverEnterEventArgs)
+    {
+        XRSimpleInteractable Button = hoverEnterEventArgs.interactable.GetComponent<XRSimpleInteractable>();
+
+        for (int i = 0; i < _bouton.Length; i++)
+        {
+            if (Button == _bouton[i])
+            {
+                _bouton[i].gameObject.GetComponent<Renderer>().material = _MButtonHover;
+            }
+        }
+    }
+
+    public void EndHoverButton(HoverExitEventArgs hoverExitEventArgs)
+    {
+        XRSimpleInteractable Button = hoverExitEventArgs.interactable.GetComponent<XRSimpleInteractable>();
+
+        for (int i = 0; i < _bouton.Length; i++)
+        {
+            if (Button == _bouton[i])
+            {
+                _bouton[i].gameObject.GetComponent<Renderer>().material = _MButton;
+            }
+        }
+    }
+
     private void ImplementCode(int buttonID) // button id == le numéro sur le _bouton de l'alarme, 10 == _bouton reset
     {
         if (buttonID == 10)
@@ -88,7 +113,7 @@ public class Alarme : MonoBehaviour
 
     private void DesactivateAlarm()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
+        _timer.StopTimer();
 
     }
 

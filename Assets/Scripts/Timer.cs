@@ -49,4 +49,9 @@ public class Timer : MonoBehaviour
         if (_timeText != null)_timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         else _timeTextCanva.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    public void StopTimer()
+    {
+        _timerIsRunning = false;
+    }
 }

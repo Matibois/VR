@@ -81,4 +81,9 @@ public class GameManager : MonoBehaviour
     {
         _objectivesManager.StealJewels(value);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
