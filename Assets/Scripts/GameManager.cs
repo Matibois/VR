@@ -17,10 +17,6 @@ public class GameManager : MonoBehaviour
     public ObjectivesManager ObjectivesManager => _objectivesManager;
     public GameObject DoorTrigger => _doorTrigger;
 
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,38 +36,12 @@ public class GameManager : MonoBehaviour
         _timer.StartTimer();
         _doorTrigger.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-    public void EnterJewelry()
-    {
-        _hasEnteredJewelry = true;
-
-        if (_timer != null)
-            _alarme._timer.StartTimer();
-        else
-            Debug.LogError("_timer is null !");
-    }
-
-    public void DisarmAlarm() 
-    { 
-        _hasDisarmedAlarm = true;
-        _timer.StartTimer();
-    }
-
-    public void Flee() 
-    { 
-        _hasFled = true; 
-    }
     
     private void SetObjectives()
     {
         _objectivesManager.AddObjective("Entrer dans la bijouterie", ObjectiveType.Simple);
-        _objectivesManager.AddObjective("D�sactiver l'alarme", ObjectiveType.Simple);
-        _objectivesManager.AddObjective($"Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
+        _objectivesManager.AddObjective("Désactiver l'alarme", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
         _objectivesManager.AddObjective("Voler le contenu du coffre-fort", ObjectiveType.Simple);
         _objectivesManager.AddObjective("S'enfuir avant la fin du temps imparti", ObjectiveType.Simple);
         _objectivesManager.InitObjectivesText();
