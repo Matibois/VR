@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3166832864039723243}
   - component: {fileID: 3305556911698961446}
+  - component: {fileID: 8619309276926429759}
   m_Layer: 0
   m_Name: DoorTrigger
   m_TagString: Untagged
@@ -53,3 +54,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8619309276926429759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645169930084533398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea487569e4aa352488358947759a973d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
