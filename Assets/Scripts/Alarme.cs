@@ -90,7 +90,7 @@ public class Alarme : MonoBehaviour
         }
     }
 
-    private void ImplementCode(int buttonID) // button id == le numéro sur le _bouton de l'alarme, 10 == _bouton reset
+    private void ImplementCode(int buttonID) // button id == le numï¿½ro sur le _bouton de l'alarme, 10 == _bouton reset
     {
         if (buttonID == 10)
         {
@@ -117,7 +117,7 @@ public class Alarme : MonoBehaviour
     private void DesactivateAlarm()
     {
         _timer.StopTimer();
-
+        GameManager.Instance.ObjectivesManager.DisarmAlarm();
     }
 
     private void ResetAlarm()

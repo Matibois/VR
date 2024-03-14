@@ -12,6 +12,7 @@ TagManager:
   - Pickable
   - Bag
   - BagCollider
+  - Key
   layers:
   - Default
   - TransparentFX

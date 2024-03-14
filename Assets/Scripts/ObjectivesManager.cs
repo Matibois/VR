@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectivesManager : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _objectivesText;
     private List<Objective> _objectivesList = new List<Objective>();
     public bool _HasEnteredJewerly = false;
+
 
     public void AddObjective(string description, ObjectiveType type, int amountToReach = 0)
     {
