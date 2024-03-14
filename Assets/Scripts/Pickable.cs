@@ -51,10 +51,11 @@ public class Pickable : MonoBehaviour
         nearBag = _nearBag;
     }
 
-    public void TestPutInBag(SelectExitEventArgs args)
+    public virtual void TestPutInBag(SelectExitEventArgs args)
     {
         if(nearBag)
         {
+            Debug.Log("parent");
             transform.gameObject.SetActive(false);
         }
     }
