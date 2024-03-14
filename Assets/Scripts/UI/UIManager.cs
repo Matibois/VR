@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject looseCanva;
     [SerializeField] private GameObject menuCanva;
 
-    [SerializeField] private Transform hand;
     [SerializeField] private Transform head;
 
     public float spawnDistance = 0.3f;
