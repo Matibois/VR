@@ -66,7 +66,7 @@ public class ObjectivesManager : MonoBehaviour
             string desc = objective.Description;
             if(objective.Type == ObjectiveType.AmountToReach)
             {
-                desc += " (" + objective.CurrentAmount + "/" + objective.AmountToReach + "�)";
+                desc += " (" + objective.CurrentAmount + "/" + objective.AmountToReach + "€)";
             }
 
             if (objective.IsCompleted)
