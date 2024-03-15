@@ -93,6 +93,7 @@ public class Alarme : MonoBehaviour
 
     private void DesactivateAlarm()
     {
+        _timer.StopTimer();
         GetComponent<Rigidbody>().isKinematic = true;
         GameManager.Instance.ObjectivesManager.DisarmAlarm();
     }
