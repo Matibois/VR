@@ -30,10 +30,12 @@ public class Alarme : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        if ( !_timer._timerIsRunning )
-        {
-            if (GameManager.Instance._objectivesManager._HasEnteredJewerly) _timer.StartTimer();
-        }
+        
+    }
+
+    public void StartTimer()
+    {
+        _timer.StartTimer();
     }
 
     public void TestCode()

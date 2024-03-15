@@ -11,9 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     [SerializeField] private Timer _timer;
-    [SerializeField] private Alarme _alarme;
-    [SerializeField] public ObjectivesManager _objectivesManager;
-    [SerializeField] private Objective _objective;
+    [SerializeField] private Alarme _alarm;
+    [SerializeField] private ObjectivesManager _objectivesManager;
     [SerializeField] private UIManager _UIManager;
     [SerializeField] private GameObject _doorTrigger;
     [SerializeField] private GameObject _policeCar;
@@ -66,6 +65,11 @@ public class GameManager : MonoBehaviour
     {
         if (!_objectivesManager.IsAlarmDisarmed())
             Lose();
+    }
+
+    public void StartAlarmTimer()
+    {
+        _alarm.StartTimer();
     }
 
     public void Win()

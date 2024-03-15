@@ -8,7 +8,6 @@ public class ObjectivesManager : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _objectivesText;
     private List<Objective> _objectivesList = new List<Objective>();
-    public bool _HasEnteredJewerly = false;
 
 
     public void AddObjective(string description, ObjectiveType type, int amountToReach = 0)
@@ -19,7 +18,7 @@ public class ObjectivesManager : MonoBehaviour
     public void EnterJewelry()
     {
         MarkObjectiveAsCompleted(0);
-        _HasEnteredJewerly = true;
+        GameManager.Instance.StartAlarmTimer();
     }
 
     public void DisarmAlarm()
@@ -67,7 +66,7 @@ public class ObjectivesManager : MonoBehaviour
             string desc = objective.Description;
             if(objective.Type == ObjectiveType.AmountToReach)
             {
-                desc += " (" + objective.CurrentAmount + "/" + objective.AmountToReach + "€)";
+                desc += " (" + objective.CurrentAmount + "/" + objective.AmountToReach + "ï¿½)";
             }
 
             if (objective.IsCompleted)

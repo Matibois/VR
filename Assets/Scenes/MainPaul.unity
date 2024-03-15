@@ -13644,7 +13644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934881781601069897, guid: 11f4986a67fc4a949bc7ba5fde79d59b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.054
+      value: 1.013
       objectReference: {fileID: 0}
     - target: {fileID: 1934881781601069897, guid: 11f4986a67fc4a949bc7ba5fde79d59b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25272,14 +25272,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1053025681}
     m_Modifications:
-    - target: {fileID: 607758070996819843, guid: a664fe5447d6ea841878bebba37c6b8f, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761475072370120948, guid: a664fe5447d6ea841878bebba37c6b8f, type: 3}
-      propertyPath: value
-      value: 89
-      objectReference: {fileID: 0}
     - target: {fileID: 2587324894256496199, guid: a664fe5447d6ea841878bebba37c6b8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0009999871
@@ -29167,11 +29159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934881781601069897, guid: 11f4986a67fc4a949bc7ba5fde79d59b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.056
+      value: 1.011
       objectReference: {fileID: 0}
     - target: {fileID: 1934881781601069897, guid: 11f4986a67fc4a949bc7ba5fde79d59b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.183
+      value: -4.208
       objectReference: {fileID: 0}
     - target: {fileID: 1934881781601069897, guid: 11f4986a67fc4a949bc7ba5fde79d59b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -45956,7 +45948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: {fileID: 1115130281}
-  _alarme: {fileID: 1571768329}
+  _alarm: {fileID: 0}
   _objectivesManager: {fileID: 3425885896399663806}
   _UIManager: {fileID: 0}
   _doorTrigger: {fileID: 0}
