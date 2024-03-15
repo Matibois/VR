@@ -39,6 +39,7 @@ public class BreakableGlass : MonoBehaviour
             ContactPoint contactPoint = collision.GetContact(0);
             Vector3 pointOfImpact = contactPoint.point;
             BreakGlass(pointOfImpact);
+            _breakGlassAudioSource.pitch = Random.Range(0.8f, 1.2f);
             _breakGlassAudioSource.Play();
         }
     }
