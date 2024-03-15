@@ -161,7 +161,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -333,7 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997b2a9160aecc84892c137abcfb3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
+  PhysicsEnable: 0
+  value: 500
 --- !u!4 &6601848382044380331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11f703bddddb22141b8cc7877cea4b7f, type: 3}
