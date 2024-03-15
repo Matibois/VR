@@ -33,14 +33,14 @@ public class ObjectivesManager : MonoBehaviour
         UpdateText();
     }
 
-    public void StealSafe()
+/*    public void StealSafe()
     {
         MarkObjectiveAsCompleted(3);
-    }
+    }*/
 
     public void Flee()
     {
-        MarkObjectiveAsCompleted(4);
+        MarkObjectiveAsCompleted(3);
 
         if(CheckIfEnoughValueIsStolen())
             GameManager.Instance.Win();
@@ -71,12 +71,14 @@ public class ObjectivesManager : MonoBehaviour
 
             if (objective.IsCompleted)
             {
-                objectivesString += "<s>" + "- " + desc + "</s>" + "\n";
+                objectivesString += "<s>" + "- " + desc + "</s>" + "\n\n";
             }
             else
             {
-                objectivesString += "- " + desc + "\n";
+                objectivesString += "- " + desc + "\n\n";
             }
+
+
         }
         // Update the text of the TextMeshPro object with the list of objectives
         _objectivesText.text = objectivesString;
