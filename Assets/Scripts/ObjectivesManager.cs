@@ -18,6 +18,7 @@ public class ObjectivesManager : MonoBehaviour
     public void EnterJewelry()
     {
         MarkObjectiveAsCompleted(0);
+        GameManager.Instance.StartAlarmTimer();
     }
 
     public void DisarmAlarm()

@@ -22,7 +22,7 @@ public class Alarme : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _timer.StartTimer();
+
     }
 
     // Update is called once per frame 
@@ -32,6 +32,11 @@ public class Alarme : MonoBehaviour
         {
 
         }
+    }
+
+    public void StartTimer()
+    {
+        _timer.StartTimer();
     }
 
     public void TestCode()
