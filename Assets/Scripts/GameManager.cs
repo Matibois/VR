@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         Invoke("Restart", 5);
     }
 
-    private void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

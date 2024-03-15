@@ -9814,6 +9814,8 @@ MonoBehaviour:
   _timeTextCanva: {fileID: 0}
   _timeText: {fileID: 351583079}
   _initialTime: 75
+  _timerIsRunning: 0
+  _finish: 0
 --- !u!114 &351583079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31410,6 +31412,8 @@ MonoBehaviour:
   _timeTextCanva: {fileID: 1115130282}
   _timeText: {fileID: 0}
   _initialTime: 180
+  _timerIsRunning: 0
+  _finish: 0
 --- !u!114 &1115130282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38856,6 +38860,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 6745394971526527769, guid: 17150d78d688a8243a30292be0c709e0, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7863301623646972091, guid: 17150d78d688a8243a30292be0c709e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.94
@@ -42112,6 +42120,9 @@ MonoBehaviour:
   - {fileID: 640949393}
   - {fileID: 811740153}
   _timer: {fileID: 351583078}
+  _timeout: 1
+  _MButton: {fileID: 0}
+  _MButtonHover: {fileID: 0}
 --- !u!65 &1571768330
 BoxCollider:
   m_ObjectHideFlags: 0
