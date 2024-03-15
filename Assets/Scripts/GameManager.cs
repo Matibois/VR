@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
         _objectivesManager.AddObjective("Entrer dans la bijouterie", ObjectiveType.Simple);
         _objectivesManager.AddObjective("Désactiver l'alarme", ObjectiveType.Simple);
         _objectivesManager.AddObjective("Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
-        _objectivesManager.AddObjective("Voler le contenu du coffre-fort", ObjectiveType.Simple);
-        _objectivesManager.AddObjective("S'enfuir avant la fin du temps imparti", ObjectiveType.Simple);
+        //_objectivesManager.AddObjective("Voler le contenu du coffre-fort", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("S'enfuir avant la fin du\ntemps imparti", ObjectiveType.Simple);
         _objectivesManager.InitObjectivesText();
     }
 
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Win");
         _UIManager.DisplayWin();
+        Invoke("Restart", 10);
     }
 
     public void Lose()
