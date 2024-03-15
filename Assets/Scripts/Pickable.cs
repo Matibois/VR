@@ -32,9 +32,6 @@ public class Pickable : MonoBehaviour
         // Put convex at true for mesh colliders
         MeshCollider temp;
         TryGetComponent<MeshCollider>(out temp);
-        if (temp != null)
-            temp.convex = true;
-
 
         bag = GameObject.FindGameObjectWithTag("BagCollider").GetComponent<Bag>();
 
