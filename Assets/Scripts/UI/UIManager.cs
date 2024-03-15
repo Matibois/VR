@@ -70,8 +70,8 @@ public class UIManager : MonoBehaviour
             objectivesUI.SetActive(!objectivesUI.activeSelf);
         }
 
-        displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
         displayValuePick.transform.position = head.position + head.transform.forward * 0.1f;
+        displayValuePick.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
         displayValuePick.transform.forward = head.transform.forward;
 
         if (_menuActive)
