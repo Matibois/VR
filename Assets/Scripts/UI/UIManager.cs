@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         }
 
         displayValuePick.transform.position = head.position + head.transform.forward * 0.5f;
-        //displayValuePick.transform.Translate(new Vector3(-0.07f, 0, 0f), Space.Self);
+        
         displayValuePick.transform.forward = head.transform.forward;
 
         if (_menuActive)
