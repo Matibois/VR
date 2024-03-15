@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Bag : MonoBehaviour
 {
     private float totalMoney;
 
-    public MeshRenderer ColliderMesh;
+    private MeshRenderer ColliderMesh;
+    private int nbObjCollide = 0;
 
     void Awake()
     {
@@ -20,11 +22,15 @@ public class Bag : MonoBehaviour
     {
         if (other.gameObject.tag == "Pickable")
         {
-            Pickable pick;
-            if (other.gameObject.TryGetComponent<Pickable>(out pick))
+            Jewerly pick;
+            if (other.gameObject.TryGetComponent<Jewerly>(out pick))
             {
-                ColliderMesh.enabled = true;
-                pick.SetNearBag(true);
+                nbObjCollide++;
+                if (pick.GetIsPicked())
+                {
+                    ColliderMesh.enabled = true;
+                    pick.SetNearBag(true);
+                }
             }
         }
     }
@@ -33,17 +39,21 @@ public class Bag : MonoBehaviour
     {
         if (other.gameObject.tag == "Pickable")
         {
-            Pickable pick;
-            if (other.gameObject.TryGetComponent<Pickable>(out pick))
+            Jewerly pick;
+            if (other.gameObject.TryGetComponent<Jewerly>(out pick))
             {
-                ColliderMesh.enabled = false;
+                nbObjCollide--;
+                if (nbObjCollide == 0)
+                    ColliderMesh.enabled = false;
                 pick.SetNearBag(false);
             }
         }
     }
 
-    public void DeactivatePreview()
+    public void PickObject()
     {
-        ColliderMesh.enabled = false;
+        nbObjCollide--;
+        if (nbObjCollide == 0)
+            ColliderMesh.enabled = false;
     }
 }

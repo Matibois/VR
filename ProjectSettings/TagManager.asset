@@ -10,6 +10,9 @@ TagManager:
   - MiniWorldCamera
   - Water
   - Pickable
+  - Bag
+  - BagCollider
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -21,8 +24,8 @@ TagManager:
   - Interactive
   - VRChar
   - Pickable
-  - 
-  - 
+  - Glass
+  - Stand
   - 
   - 
   - 

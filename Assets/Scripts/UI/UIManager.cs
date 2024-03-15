@@ -1,42 +1,151 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Transform hand;
+    public static UIManager Instance;
+
+    [SerializeField] private GameObject timer;
+    [SerializeField] private GameObject winCanva;
+    [SerializeField] private GameObject looseCanva;
+    [SerializeField] private GameObject menuCanva;
+
+
+    [SerializeField] private GameObject displayValuePick;
+    [SerializeField] private GameObject objectivesUI;
+    [SerializeField] private TextMeshProUGUI textValuePick;
+    Coroutine display;
+
+    //[SerializeField] private Transform hand;
+
     [SerializeField] private Transform head;
+
     public float spawnDistance = 0.3f;
 
     [SerializeField] Vector3 _offset;
+    public InputActionProperty MenuBUtton;
+    public InputActionProperty ObjectivesButton;
 
-    public float tempy; 
-    public float tempz; 
-    
-    [SerializeField] private GameObject canvas;
-    public InputActionProperty DisplayUI;
+    private bool _winActive = false;
+    private bool _looseActive = false;
+    private bool _menuActive = false;
+
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+        _winActive = false;
+        _looseActive = false;
+        _menuActive = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
 
-        canvas.transform.position = hand.position + hand.transform.forward;
 
-        canvas.transform.LookAt(new Vector3 (head.position.x, head.position.y, head.transform.position.z));
-
-        canvas.transform.Translate(_offset, Space.Self);
-
-
-        if (DisplayUI.action.WasPressedThisFrame())
+        if (MenuBUtton.action.WasPressedThisFrame())
         {
-            canvas.SetActive(!canvas.activeSelf);
+            DiplayMenu();
         }
-        //canvas.transform.position = head.position + new Vector3(head.forward.x, tempy, head.forward.z+tempz).normalized * spawnDistance;
+
+        if (ObjectivesButton.action.WasPressedThisFrame())
+        {
+            objectivesUI.SetActive(!objectivesUI.activeSelf);
+        }
+
+        displayValuePick.transform.position = head.position + head.transform.forward * 0.5f;
+        
+        displayValuePick.transform.forward = head.transform.forward;
+
+        if (_menuActive)
+        {
+            menuCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            menuCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            menuCanva.transform.forward = head.transform.forward;
+        }
+
+        if(_winActive)
+        {
+            winCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            winCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            winCanva.transform.forward = head.transform.forward;
+        }
+
+        if (_looseActive)
+        {
+            looseCanva.transform.position = head.position + head.transform.forward * 0.5f;
+            looseCanva.transform.Translate(new Vector3(0, 0, 0.5f), Space.Self);
+            looseCanva.transform.forward = head.transform.forward;
+        }
+
+    }
+
+    public void HandlePickUI(int value)
+    {
+        if (display != null)
+        {
+            StopCoroutine(display);
+        }
+
+        display = StartCoroutine(DisplayPickValue(value));
+    }
+
+    IEnumerator DisplayPickValue(int value)
+    {
+        DisplayMenuPickValue(value);
+
+        yield return new WaitForSeconds(2);
+
+        StopDisplayPickValue();
+    }
+
+    public void DisplayMenuPickValue(int value)
+    {
+        textValuePick.text = "+ " + value.ToString() + "€";
+        displayValuePick.gameObject.SetActive(true);
+    }
+    public void StopDisplayPickValue()
+    {
+        displayValuePick.gameObject.SetActive(false);
+    }
+
+
+
+    private void DiplayMenu()
+    {
+        _menuActive = !_menuActive;
+        menuCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        menuCanva.SetActive(!menuCanva.activeSelf);
+    }
+
+    public void DisplayWin()
+    {
+        winCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        winCanva.SetActive(true);
+        _winActive = true;
+    }
+
+    public void DisplayLoose()
+    {
+        looseCanva.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        looseCanva.SetActive(true);
+        _looseActive = true;
     }
 }

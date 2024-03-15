@@ -1,16 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
     [SerializeField] private Timer _timer;
+    [SerializeField] private Alarme _alarm;
+    [SerializeField] private ObjectivesManager _objectivesManager;
+    [SerializeField] private UIManager _UIManager;
+    [SerializeField] private GameObject _doorTrigger;
+    [SerializeField] private GameObject _policeCar;
+    private int _amountToSteal;
 
-    private bool _hasEnteredJewelry = false;
-    private bool _hasDisarmedAlarm = false;
-    private bool _hasFled = false;
+    public ObjectivesManager ObjectivesManager => _objectivesManager;
+    public GameObject DoorTrigger => _doorTrigger;
 
     private void Awake()
     {
@@ -26,32 +35,60 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _amountToSteal = 10000;
+        SetObjectives();
+        _timer.StartTimer();
+        _doorTrigger.SetActive(false);
+        _policeCar.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void SetObjectives()
     {
-
+        _objectivesManager.AddObjective("Entrer dans la bijouterie", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("Désactiver l'alarme", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("Remplir le sac de bijoux", ObjectiveType.AmountToReach, _amountToSteal);
+        //_objectivesManager.AddObjective("Voler le contenu du coffre-fort", ObjectiveType.Simple);
+        _objectivesManager.AddObjective("S'enfuir avant la fin du\ntemps imparti", ObjectiveType.Simple);
+        _objectivesManager.InitObjectivesText();
     }
 
-    public void EnterJewelry()
+    public void JewelStolen(int value)
     {
-        _hasEnteredJewelry = true;
-
-        if (_timer != null)
-            _timer.StartTimer();
-        else
-            Debug.LogError("_timer is null !");
+        _objectivesManager.StealJewels(value);
     }
 
-    public void DisarmAlarm() 
-    { 
-        _hasDisarmedAlarm = true; 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public void GlassBroken()
+    {
+        if (!_objectivesManager.IsAlarmDisarmed())
+            Lose();
     }
 
-    public void Flee() 
-    { 
-        _hasFled = true; 
+    public void StartAlarmTimer()
+    {
+        _alarm.StartTimer();
+    }
+
+    public void Win()
+    {
+        Debug.Log("Win");
+        _UIManager.DisplayWin();
+        Invoke("Restart", 10);
+    }
+
+    public void Lose()
+    {
+        Debug.Log("Lose");
+        _policeCar.SetActive(true);
+        _UIManager.DisplayLoose();
+        Invoke("Restart", 5);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
